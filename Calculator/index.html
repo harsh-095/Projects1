@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #screen{
+            border: 1px solid black; 
+            width: 50%;
+            height: 30px;
+            background-image: linear-gradient(#8f8f8f,#e0e0e0);
+            box-shadow: grey 5px 5px 10px;
+            font-size: 20px;
+        }
+        button{
+            height: 40px;
+            width: 40px;
+            box-shadow: grey 3px 3px 5px;
+        }
+        table{
+            background-image: linear-gradient(#648484,#b9f9b9)
+        }
+        td,td>button{
+            background-image: radial-gradient(#ffffdf ,grey);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p contenteditable="true" type="text" id="screen" ></p>
+    <table border=5 cellspacing=5>
+       
+        <tr>
+            <td><button id="1" onclick="f(1)">1</button></td>
+            <td><button id="2" onclick="f(2)">2</button></td>
+            <td><button id="3" onclick="f(3)">3</button></td>
+            <td><button id="+" onclick="f('+')">+</button></td>
+        </tr><tr>
+            <td><button id="4" onclick="f(4)">4</button></td>
+            <td><button id="5" onclick="f(5)">5</button></td>
+            <td><button id="6" onclick="f(6)">6</button></td>
+            <td><button id="-" onclick="f('-')">-</button></td>
+        </tr><tr>
+            <td><button id="7" onclick="f(7)">7</button></td>
+            <td><button id="8" onclick="f(8)">8</button></td>
+            <td><button id="9" onclick="f(9)">9</button></td>
+            <td><button id="*" onclick="f('*')">*</button></td>
+        </tr><tr>
+            <td><button id="0" onclick="f(0)">0</button></td>
+            <td><button id="/" onclick="f('/')">/</button></td>
+            <td><button id="%" onclick="f('%')">%</button></td>
+            <td><button id="=" onclick="cal()">=</button></td>
+        </tr><tr>
+            <td><button id="(" onclick="f('(')">(</button></td>
+            <td><button id=")" onclick="f(')')">)</button></td>
+            <td><button id="clr" onclick="clr()">clr</button></td>
+            <td><button id="." onclick="f()">.</button></td>
+        </tr>
+    </table>
+    <script>
+        var scr=document.getElementById('screen');
+        function f(n){
+            scr.innerHTML+=String(n);
+        }
+        
+        function cal(){
+            try{
+            scr.innerHTML=eval(scr.innerHTML);
+            }
+            catch(err){
+                alert(err);
+        }
+        }
+        
+        function clr(){
+            scr.innerHTML='';
+        }
+        
+        
+    </script>
+</body>
+</html>
