@@ -10,16 +10,7 @@ body{
     align-items: center;
     gap: 5vh;;
 }
-#calc2{
-    background-color: #648484;
-    display: flex;
-    width: 20vh;
-    flex-wrap: wrap;
-    gap: 2vh 2vh;
-    height: 15vh;
-    overflow: hidden;
-    scroll-behavior: smooth;
-}
+
 #screen{
     border: 3px solid black; 
     width: 100%;
