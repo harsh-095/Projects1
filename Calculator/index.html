@@ -4,33 +4,14 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
     <link rel="stylesheet" href="index.css">
-    <style>
-        #screen{
-            border: 1px solid black; 
-            width: 50%;
-            height: 30px;
-            background-image: linear-gradient(#8f8f8f,#e0e0e0);
-            box-shadow: grey 5px 5px 10px;
-            font-size: 20px;
-        }
-        button{
-            height: 40px;
-            width: 40px;
-            box-shadow: grey 3px 3px 5px;
-        }
-        table{
-            background-image: linear-gradient(#648484,#b9f9b9)
-        }
-        td,td>button{
-            background-image: radial-gradient(#ffffdf ,grey);
-            font-size: 20px;
-        }
-    </style>
+    <script src="index.js"></script>
 </head>
 <body>
+    <h1>Welcome To Harsh's Calc.</h1>
+    <div id="calc">
     <p contenteditable="true" type="text" id="screen" ></p>
     <table border=2 cellspacing=5>
-       
+        
         <tr>
             <td><button id="1" onclick="f(1)">1</button></td>
             <td><button id="2" onclick="f(2)">2</button></td>
@@ -58,26 +39,8 @@
             <td><button id="." onclick="f()">.</button></td>
         </tr>
     </table>
-    <script>
-        var scr=document.getElementById('screen');
-        function f(n){
-            scr.innerHTML+=String(n);
-        }
-        
-        function cal(){
-            try{
-            scr.innerHTML=eval(scr.innerHTML);
-            }
-            catch(err){
-                alert(err);
-        }
-        }
-        
-        function clr(){
-            scr.innerHTML='';
-        }
-        
-        
-    </script>
+</div>
+<button onclick="scroll1()">scroll</button>
+<div id="calc2"><button onclick="add()">add</button></div>
 </body>
 </html>
