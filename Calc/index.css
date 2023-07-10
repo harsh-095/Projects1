@@ -3,6 +3,10 @@
     padding: 0;
     font-size: 3.2vh;
 }
+body{
+    position: absolute;
+    top: 0;
+}
 #calc{
     border: 2px solid black;
     width: 100vw;
