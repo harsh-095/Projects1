@@ -5,14 +5,14 @@ function page_load(){
     
     window.exp_=[];
     window.exp=[];
-    window.scroller=document.getElementById("scroller");
+    window.scroll=document.getElementById("scroller");
     window.scr=document.getElementById("screen");
     window.but1=document.getElementById("buttons1");
     window.but2=document.getElementById("buttons2");
     const buttons1="1,2,3,+,4,5,6,-,7,8,9,*,(,0,),/,round,.".split(',').concat([","],"%,Mode,Clr,C,=".split(','));
     const buttons2="sin,cos,tan,sqrt,log,log10,log2,exp,pow,hypot,E,PI,(,.".split(',').concat([","],"),Mode,Clr,C,=".split(','));
     var i=1;
-    scroller.scrollLeft=0;
+    scroll.scrollLeft=0;
     buttons1.forEach(b => {
         var newb=document.createElement('button');
         newb.innerHTML=b;
@@ -66,7 +66,7 @@ function add_to_scr(txt){
     }
     else{
         if(txt=="Mode"){
-            scroll();
+            scroll1();
             return
         }
     }
@@ -75,12 +75,12 @@ exp_.push(txt);
 scr.innerHTML=exp.join("")
 }
 
-function scroll(){
-    console.log(scroller.scrollLeft+"=="+but1.offsetWidth);
-    if(scroller.scrollLeft>0){
-        scroller.scrollLeft=0;
+function scroll1(){
+    console.log(scroll.scrollLeft+"=="+but1.offsetWidth);
+    if(scroll.scrollLeft>0){
+        scroll.scrollLeft=0;
     }
     else{
-        scroller.scrollLeft=but1.offsetWidth;
+        scroll.scrollLeft=but1.offsetWidth;
     }
 }
