@@ -5,7 +5,7 @@ function page_load(){
     
     window.exp_=[];
     window.exp=[];
-    window.scroller=document.getElementById("scroller")
+    window.scroller=document.getElementById("scroller");
     window.scr=document.getElementById("screen");
     window.but1=document.getElementById("buttons1");
     window.but2=document.getElementById("buttons2");
