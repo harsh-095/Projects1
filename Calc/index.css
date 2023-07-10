@@ -1,23 +1,80 @@
 *{
     margin: 0;
     padding: 0;
+    font-size: 3.2vh;
 }
 #calc{
+    border: 2px solid black;
+    width: 100vw;
+    max-width: 500px;
+    height: 100vh;
+    max-height: 800px;
     position: absolute;
     top:50%;
     left: 50%;
     translate:-50% -50% ;
+    background-color: rgb(175, 196, 147);
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 2vh;
 }
 #screen{
-    /* width: 100%; */
-    height: 5vh;
-    background: red;
+    margin: 1%;
+    width: 98%;
+    height: 13.8%;
+    background: rgb(98, 119, 91);
+    color: rgb(108, 199, 168);
+    font-size: 5vh;
+    overflow-wrap: break-word;
+    /* overflow-y: scroll; */
+    scrollbar-color: rgb(233, 6, 6);
+    scrollbar-width: auto;
+    border-radius: 1vh;
+    /* scrollbar-gutter: stable both-edges; */
 }
-#buttons{
-    /* width: 100%; */
-    height: 20vh;
+
+#scroller{
+    height: 85%;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    scroll-behavior:smooth;
 }
+#buttons1,#buttons2{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(128, 132, 132);
+    flex-shrink: 0;
+}
+
 .key{
-    width: 25%;
-    height: 25%;
+    margin: 1% 1%;
+    width: 23%;
+    height: 15%;
+    border-radius: 10px;
+    background-color: rgb(152, 182, 172);
+    box-shadow: 0.2vh 0.2vh 0.5vh rgb(11, 11, 11);
+}
+.key:hover{
+    scale: 1.05;
+    box-shadow: 0.3vh 0.3vh 1vh rgb(11, 11, 11);
+}
+.key:active{
+    scale: 0.95;
+    box-shadow: 0.1vh 0.1vh 1vh rgb(11, 11, 11);
+}
+#buttons2>.key{
+    height: 18.5%;
+}
+#b24,#b44{
+    background-color: rgb(99, 167, 99);
+}
+#b23,#b43{
+    background-color: rgb(167, 132, 99);
+}
+#b22,#b42{
+    background-color: rgb(167, 99, 99);
+}
+#b21,#b41{
+    background-color: rgb(99, 143, 167);
 }

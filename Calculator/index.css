@@ -8,13 +8,16 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5vh;;
+    gap: 5vh;
 }
-
+#calc{
+    overflow: hidden;
+}
 #screen{
     border: 3px solid black; 
-    width: 100%;
-    height: 30px;
+    width: 185px;
+    height: max-content;
+    min-height: 30px;
     background-image: linear-gradient(#8f8f8f,#e0e0e0);
     box-shadow: grey 5px 5px 10px;
     font-size: 20px;

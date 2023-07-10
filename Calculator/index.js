@@ -11,7 +11,8 @@ const cal_but="123+456-789*(0)/".split("").concat(["clr","%","="]);
         function cal(){
             var scr=document.getElementById('screen');
             try{
-            scr.innerHTML=eval(scr.innerHTML);
+                let s=eval(scr.innerHTML);
+                scr.innerHTML=parseFloat(s);
             }
             catch(err){
                 alert(err);

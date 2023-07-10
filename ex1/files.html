@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File List</title>
+</head>
+<body>
+  <h1>File List</h1>
+  <ul id="file-list">
+    <li><a href="#" id="about-link">about.html</a></li>
+  </ul>
+
+  <script>
+    const aboutLink = document.getElementById("about-link");
+
+    aboutLink.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+      window.requestFileSystem(window.TEMPORARY, 1024 * 1024, (fs) => {
+        fs.root.getFile("../about.html", { create: false }, (fileEntry) => {
+          fileEntry.file((file) => {
+            const reader = new FileReader();
+            reader.onloadend = function() {
+              const content = this.result;
+              const editableDiv = document.createElement("div");
+              editableDiv.contentEditable = "true";
+              editableDiv.innerHTML = content;
+              document.body.innerHTML = "";
+              document.body.appendChild(editableDiv);
+
+              // Perform actions on the editable content as needed
+
+              // Example: Save button
+              const saveButton = document.createElement("button");
+              saveButton.textContent = "Save Changes";
+              saveButton.addEventListener("click", () => {
+                const updatedContent = editableDiv.innerHTML;
+
+                fs.root.getFile("about.html", { create: true }, (fileEntry) => {
+                  fileEntry.createWriter((fileWriter) => {
+                    const blob = new Blob([updatedContent], { type: 'text/html' });
+                    fileWriter.write(blob);
+                    console.log("File updated successfully!");
+                  }, (error) => {
+                    console.error("Error creating file writer:", error);
+                  });
+                }, (error) => {
+                  console.error("Error creating or accessing the file:", error);
+                });
+              });
+
+              document.body.appendChild(saveButton);
+            };
+            reader.readAsText(file);
+          }, (error) => {
+            console.error("Error reading file:", error);
+          });
+        }, (error) => {
+          console.error("Error accessing the file:", error);
+        });
+      }, (error) => {
+        console.error("Error requesting file system:", error);
+      });
+    });
+  </script>
+</body>
+</html>

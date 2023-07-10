@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+</head>
+<body>
+  <h1>Welcome to my Portfolio</h1>
+  <nav>
+    <div id="disp1"></div>
+    <div id="disp2"></div>
+
+    <div id="disp3"></div>
+    <ul id="pages-list"></ul>
+  </nav>
+
+  <script>
+    // Fetch the file names from the "pages" folder
+    fetch("pages/")
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(data, "text/html");
+
+        // Get the anchor elements from the fetched HTML document
+        const anchors = htmlDoc.getElementsByTagName("a");
+        document.getElementById("disp1").innerHTML="disp1="+data;
+        // Iterate over the anchor elements and extract the file names
+        for (let i = 4; i < anchors.length; i++) {
+          const fileName = anchors[i].getAttribute("href");
+          const listItem = document.createElement("li");
+          const link = document.createElement("a");
+          link.href =  fileName;
+          link.textContent = fileName;
+          listItem.appendChild(link);
+          document.getElementById("pages-list").appendChild(listItem);
+        }
+        document.getElementById("disp2").innerHTML="disp2="+"<a href='/test'>back</a>";
+      })
+      .catch(error => {
+        console.error("Error fetching file names:", error);
+      });
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+</head>
+<body>
+  <h1>Welcome to my Portfolio</h1>
+  <nav>
+    <ul id="pages-list"></ul>
+  </nav>
+
+  <script>
+    // Fetch the file names from the "pages" folder
+    fetch("pages/")
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(data, "text/html");
+
+        // Get the anchor elements from the fetched HTML document
+        const anchors = Array.from(htmlDoc.getElementsByTagName("a"));
+
+        // Filter out any undesired file names
+        const fileNames = anchors
+          .map(anchor => anchor.getAttribute("href"))
+          .filter(fileName => (fileName.startsWith("/test/pages/")));
+
+        // Generate list items with links for each file name
+        const listItems = fileNames.map(fileName => {
+          const listItem = document.createElement("li");
+          const link = document.createElement("a");
+          link.href =  fileName;
+          link.textContent = fileName;
+          listItem.appendChild(link);
+          return listItem;
+        });
+
+        // Append the list items to the pages-list ul element
+        const pagesList = document.getElementById("pages-list");
+        listItems.forEach(listItem => {
+          pagesList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching file names:", error);
+      });
+  </script>
+</body>
+</html>
+
