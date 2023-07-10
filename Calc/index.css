@@ -3,15 +3,11 @@
     padding: 0;
     font-size: 3.2vh;
 }
-body{
-    position: absolute;
-    top: 0;
-}
 #calc{
     border: 2px solid black;
     width: 100vw;
     max-width: 500px;
-    height: 100vh;
+    height: 100%;
     max-height: 800px;
     position: absolute;
     top:50%;
