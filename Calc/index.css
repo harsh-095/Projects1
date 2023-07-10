@@ -38,7 +38,7 @@
     display: flex;
     flex-flow: row nowrap;
     overflow: hidden;
-    scroll-behavior:smooth;
+    /* scroll-behavior:smooth; */
 }
 #buttons1,#buttons2{
     width: 100%;
